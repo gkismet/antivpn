@@ -45,7 +45,7 @@ flowchart LR
 3. 观众在 VPS 终端只需输入一行命令即可全自动运行：
 
 ```bash
-bash <(curl -fsSL https://raw.githubusercontent.com/<你的GitHub用户名>/antivpn/main/install.sh)
+bash <(curl -fsSL https://raw.githubusercontent.com/gkismet/antivpn/main/install.sh)
 ```
 
 ---
@@ -99,10 +99,10 @@ bash <(curl -fsSL https://raw.githubusercontent.com/<你的GitHub用户名>/anti
 👉 专属优惠通道已激活，即买即用，无需繁琐实名即可快速开通！
 
 ⚡ 【一键极速搭建脚本】：
-bash <(curl -fsSL https://raw.githubusercontent.com/<你的用户名>/antivpn/main/install.sh)
+bash <(curl -fsSL https://raw.githubusercontent.com/gkismet/antivpn/main/install.sh)
 
 📁 【GitHub 开源仓库与图文文档】：
-👉 https://github.com/<你的用户名>/antivpn
+👉 https://github.com/gkismet/antivpn
 
 💻 【全平台推荐客户端下载】：
 • Windows / macOS: Clash Verge Rev (https://github.com/clash-verge-rev/clash-verge-rev)

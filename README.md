@@ -27,7 +27,7 @@
 通过 SSH 连接到你的 VPS 之后，只需复制并粘贴以下整行命令运行：
 
 ```bash
-bash <(curl -fsSL https://raw.githubusercontent.com/canyus/antivpn/main/install.sh)
+bash <(curl -fsSL https://raw.githubusercontent.com/gkismet/antivpn/main/install.sh)
 ```
 *(注：如果使用自建仓库，请将上方链接中的用户名替换为你的 GitHub 用户名)*
 
