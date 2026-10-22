@@ -39,7 +39,7 @@ bash <(curl -fsSL https://raw.githubusercontent.com/gkismet/antivpn/main/install
 5. **在终端一键打印**：
    - 📋 客户端通用导入链接 (`vless://...`)
    - 📱 手机即时扫码二维码 (ASCII QR Code)
-   - 💻 Windows / macOS (Clash Verge) 规则分流配置代码
+   - 💻 Windows / macOS (v2rayN) 一键秒级导入指引
 6. **安装系统全局指令**：后续在 VPS 任何位置输入 `vpn` 即可随时重新调出菜单。
 
 ---
@@ -50,10 +50,10 @@ bash <(curl -fsSL https://raw.githubusercontent.com/gkismet/antivpn/main/install
 
 | 平台 | 推荐客户端 | 下载地址 | 使用说明 |
 | :--- | :--- | :--- | :--- |
-| **Windows** | **Clash Verge Rev** | [GitHub Releases](https://github.com/clash-verge-rev/clash-verge-rev/releases) | 导入配置，在设置中打开 **【Tun 模式】** 和 **【系统代理】** |
-| **macOS** | **Clash Verge Rev** / **Sing-box** | [GitHub Releases](https://github.com/clash-verge-rev/clash-verge-rev/releases) | 导入配置，主界面开启 **【Tun 模式】**（弹窗允许安装网卡驱动） |
+| **Windows** | **v2rayN** | [GitHub Releases](https://github.com/2dust/v2rayN/releases) | 复制上方 `vless://` 链接在主界面按 `Ctrl+V` 一键导入，底部勾选 **【启用Tun模式】** 与 **【自动配置系统代理】** |
+| **macOS** | **v2rayN (Mac版)** / **Sing-box** | [GitHub Releases](https://github.com/2dust/v2rayN/releases) | 复制链接导入节点，开启 **【Tun 模式】**（弹窗允许安装网卡驱动） |
 | **iOS** | **Shadowrocket (小火箭)** / **Sing-box** | App Store (海外区) | 手机打开软件，直接扫描脚本生成的二维码即可秒连 |
-| **Android** | **v2rayNG** / **Clash Verge** | [GitHub Releases](https://github.com/2dust/v2rayNG/releases) | 点击右上角 `+` 扫描终端二维码，右下角开启连接 |
+| **Android** | **v2rayNG** | [GitHub Releases](https://github.com/2dust/v2rayNG/releases) | 点击右上角 `+` 扫描终端二维码，右下角开启连接 |
 
 ---
 
@@ -64,7 +64,7 @@ bash <(curl -fsSL https://raw.githubusercontent.com/gkismet/antivpn/main/install
 vpn
 ```
 即可调出交互式管理菜单：
-- 查看当前节点链接、二维码与 Clash 配置
+- 查看当前节点链接、二维码与客户端导入指引
 - 重启 / 检查节点服务状态
 - 单独检查 BBR 拥塞控制
 - 一键彻底卸载清理

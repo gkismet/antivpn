@@ -71,7 +71,7 @@ bash <(curl -fsSL https://raw.githubusercontent.com/gkismet/antivpn/main/install
 - 镜头展示：脚本自动开启 BBR、自动配置 Xray Reality、自动生成二维码和链接，耗时仅需 30 秒。
 
 ### 4. 第三步：客户端配置展示（高光演示）
-- **Windows / Mac**：演示在 Clash Verge Rev 中导入节点并**开启 TUN 模式**。
+- **Windows / Mac**：演示在 v2rayN 中按 `Ctrl+V`（或从剪贴板导入）秒级导入节点并**开启 TUN 模式**。
 - **手机端**：拿起手机直接对着屏幕上的 ASCII 二维码一扫，立刻连接成功。
 
 ### 5. 第四步：测速与 AI 体验验证（打消顾虑）
@@ -105,7 +105,7 @@ bash <(curl -fsSL https://raw.githubusercontent.com/gkismet/antivpn/main/install
 👉 https://github.com/gkismet/antivpn
 
 💻 【全平台推荐客户端下载】：
-• Windows / macOS: Clash Verge Rev (https://github.com/clash-verge-rev/clash-verge-rev)
+• Windows / macOS: v2rayN (https://github.com/2dust/v2rayN)
 • iOS: Shadowrocket (App Store 海外区) / Sing-box
 • Android: v2rayNG (https://github.com/2dust/v2rayNG)
 
@@ -115,7 +115,7 @@ bash <(curl -fsSL https://raw.githubusercontent.com/gkismet/antivpn/main/install
 01:15 特价 VPS 选购实操与机房选择
 03:30 SSH 连接 VPS 演示
 04:45 一键脚本自动安装演示（30秒全自动）
-06:20 Windows / Mac (Clash Verge) 导入与 TUN 模式设置
+06:20 Windows / Mac (v2rayN) 一键导入与 TUN 模式设置
 08:15 手机端一键扫码连接演示
 09:40 4K 播放与 ChatGPT/Antigravity 连通性测速
 11:00 常见问题与排错技巧
@@ -124,5 +124,5 @@ bash <(curl -fsSL https://raw.githubusercontent.com/gkismet/antivpn/main/install
 💬 欢迎加入我们的交流社群一起探讨：
 Telegram 交流群: https://t.me/xxxxxx
 
-#自建节点 #VLESSReality #VPS推荐 #科学上网 #Antigravity #YouTube教程 #ClashVerge
+#自建节点 #VLESSReality #VPS推荐 #科学上网 #Antigravity #YouTube教程 #v2rayN
 ```

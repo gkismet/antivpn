@@ -292,26 +292,10 @@ show_node_info() {
     qrencode -t UTF8 "$VLESS_URL"
     echo ""
     echo -e "${PURPLE}${BOLD}──────────────────────────────────────────────────────────────────${PLAIN}"
-    echo -e " 💻 ${BOLD}【Windows / macOS - Clash Verge 节点配置】${PLAIN}:"
-    echo -e " 若在 Clash Verge 中使用，可在配置文件 proxies 下添加:"
-    echo -e "${CYAN}"
-    cat << EOF
-  - name: "AntiVPN-${SERVER_IP}"
-    type: vless
-    server: ${SERVER_IP}
-    port: ${LISTEN_PORT}
-    uuid: ${UUID}
-    network: tcp
-    tls: true
-    udp: true
-    flow: xtls-rprx-vision
-    servername: ${DEST_SNI}
-    reality-opts:
-      public-key: ${PUBLIC_KEY}
-      short-id: ${SHORT_ID}
-    client-fingerprint: chrome
-EOF
-    echo -e "${PLAIN}"
+    echo -e " 💻 ${BOLD}【Windows / macOS 推荐客户端 - v2rayN】${PLAIN}:"
+    echo -e " 1. 下载打开 v2rayN: ${CYAN}https://github.com/2dust/v2rayN${PLAIN}"
+    echo -e " 2. 复制上方 ${CYAN}vless://${PLAIN} 链接，在 v2rayN 界面按 ${YELLOW}Ctrl+V${PLAIN} 即可秒级导入！"
+    echo -e " 3. 底部勾选 ${GREEN}【启用Tun模式】${PLAIN} 与 ${GREEN}【自动配置系统代理】${PLAIN} 即可全系统加速。"
     echo -e "${PURPLE}${BOLD}──────────────────────────────────────────────────────────────────${PLAIN}"
     echo -e " 💡 ${BOLD}提示:${PLAIN} 随时输入 ${GREEN}${BOLD}vpn${PLAIN} 命令即可重新调出此菜单与二维码。"
     echo -e " 🎁 ${BOLD}高性价比 VPS 购买推荐:${PLAIN} ${YELLOW}${AFF_VPS_URL}${PLAIN}"
