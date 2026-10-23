@@ -12,3 +12,9 @@ clash_config.yaml
 .DS_Store
 Thumbs.db
 *.log
+
+# 视频渲染与音频构建文件 (防止仓库过大)
+*.mp4
+*.aiff
+*.mp3
+video_build/

@@ -94,9 +94,9 @@ bash <(curl -fsSL https://raw.githubusercontent.com/gkismet/antivpn/main/install
 
 👇 本期视频涉及的所有资源与特价 VPS 购买渠道：
 ━━━━━━━━━━━━━━━━━━━━━━━━━━
-🎁 【视频同款高性价比 VPS 购买推荐】（专为外网与 AI 优化，支持快捷支付）：
+🎁 【视频同款高性价比 VPS 购买推荐】（原生双ISP住宅IP、中国大陆优化高速直连、流媒体/AI 0风控防封）：
 👉 官方购买渠道（NovixLink 特惠通道）: https://novixlink.com/aff.php?aff=580
-👉 专属优惠通道已激活，即买即用，无需繁琐实名即可快速开通！
+👉 专属优惠通道已激活，即买即用，无需繁琐实名即可快速开通！美国家庭宽带纯净住宅 IP，彻底解决 ChatGPT/TikTok 封号难题！
 
 ⚡ 【一键极速搭建脚本】：
 bash <(curl -fsSL https://raw.githubusercontent.com/gkismet/antivpn/main/install.sh)
