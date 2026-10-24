@@ -9,7 +9,7 @@
 AUTHOR_NAME="我的科技频道"
 AFF_VPS_NAME="NovixLink 原生双ISP住宅IP (中国优化高速云)"
 AFF_VPS_URL="https://novixlink.com/aff.php?aff=580"  # 👈 用户的专属 VPS 返佣推广链接
-YOUTUBE_CHANNEL="https://youtube.com/@yourchannel"  # 👈 你的 YouTube 频道链接（可在开播后替换）
+YOUTUBE_CHANNEL="https://youtu.be/1YFYq-bukoo"  # 👈 你的 YouTube 视频教程链接
 TG_GROUP="https://t.me/yourgroup"                  # 👈 你的 TG 交流群（可选）
 # -------------------------------------------------------------
 

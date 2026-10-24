@@ -4,9 +4,12 @@
 [![Platform](https://img.shields.io/badge/Platform-Ubuntu%20%7C%20Debian%20%7C%20CentOS%20%7C%20AlmaLinux-green.svg)]()
 [![Protocol](https://img.shields.io/badge/Protocol-VLESS--Reality-orange.svg)]()
 [![Optimization](https://img.shields.io/badge/Acceleration-Linux%20Kernel%20BBR-purple.svg)]()
+[![YouTube Video](https://img.shields.io/badge/YouTube-完整实操视频教程-red?logo=youtube)](https://youtu.be/1YFYq-bukoo)
 
 > 专为 **外贸办公、科研检索、海外 AI 大模型开发（Antigravity、ChatGPT、Claude、Cursor）** 设计的轻量级自建节点工具。  
 > **真正小白化**：免自购域名、免配 SSL 证书、无感 TLS 伪装、抗 GFW DPI 封锁，一键生成全平台可用配置！
+> 
+> 📺 **配套手把手视频教程**：[https://youtu.be/1YFYq-bukoo](https://youtu.be/1YFYq-bukoo)
 
 ---
 
