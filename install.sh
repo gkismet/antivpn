@@ -9,8 +9,9 @@
 AUTHOR_NAME="我的科技频道"
 AFF_VPS_NAME="NovixLink 原生双ISP住宅IP (中国优化高速云)"
 AFF_VPS_URL="https://novixlink.com/aff.php?aff=580"  # 👈 用户的专属 VPS 返佣推广链接
-YOUTUBE_CHANNEL="https://youtu.be/1YFYq-bukoo"  # 👈 你的 YouTube 视频教程链接
+YOUTUBE_CHANNEL="https://youtu.be/1YFYq-buko0"  # 👈 你的 YouTube 视频教程链接
 TG_GROUP="https://t.me/yourgroup"                  # 👈 你的 TG 交流群（可选）
+SCRIPT_URL="https://raw.githubusercontent.com/gkismet/antivpn/main/install.sh"  # 👈 本脚本 raw 地址（用于安装 vpn 快捷命令）
 # -------------------------------------------------------------
 
 # 字体颜色
@@ -53,6 +54,7 @@ EOF
     echo -e " 📺 YouTube:  ${BLUE}${YOUTUBE_CHANNEL}${PLAIN}"
     echo -e " 🎁 特惠 VPS: ${YELLOW}${AFF_VPS_NAME}${PLAIN}"
     echo -e " 🔗 购买链接: ${YELLOW}${AFF_VPS_URL}${PLAIN}"
+    echo -e "    (推广链接：通过此链接购买作者可获得返佣，你的价格不变)"
     echo -e "${BOLD}${PURPLE}==================================================================${PLAIN}"
     echo ""
 }
@@ -84,8 +86,8 @@ enable_bbr() {
     if sysctl net.ipv4.tcp_congestion_control | grep -q bbr; then
         echo -e "${GREEN}✓ BBR 加速已在运行中，无需重复开启。${PLAIN}"
     else
-        echo "net.core.default_qdisc=fq" >> /etc/sysctl.conf
-        echo "net.ipv4.tcp_congestion_control=bbr" >> /etc/sysctl.conf
+        grep -q '^net.core.default_qdisc=fq' /etc/sysctl.conf 2>/dev/null || echo "net.core.default_qdisc=fq" >> /etc/sysctl.conf
+        grep -q '^net.ipv4.tcp_congestion_control=bbr' /etc/sysctl.conf 2>/dev/null || echo "net.ipv4.tcp_congestion_control=bbr" >> /etc/sysctl.conf
         sysctl -p > /dev/null 2>&1
         if sysctl net.ipv4.tcp_congestion_control | grep -q bbr; then
             echo -e "${GREEN}✓ BBR 拥塞控制开启成功！已极大降低跨国长距离传输丢包率。${PLAIN}"
@@ -100,11 +102,24 @@ install_dependencies() {
     echo -e "${BLUE}[2/5] 正在安装系统基础工具包...${PLAIN}"
     if [[ "$OS_ID" == "ubuntu" || "$OS_ID" == "debian" ]]; then
         apt-get update -y -q > /dev/null 2>&1
-        apt-get install -y -q curl wget tar jq qrencode openssl socat ca-certificates > /dev/null 2>&1
+        apt-get install -y -q curl wget tar unzip jq qrencode openssl socat ca-certificates > /dev/null 2>&1
     elif [[ "$OS_ID" == "centos" || "$OS_ID" == "almalinux" || "$OS_ID" == "rocky" ]]; then
         yum install -y -q epel-release > /dev/null 2>&1
-        yum install -y -q curl wget tar jq qrencode openssl socat ca-certificates > /dev/null 2>&1
+        yum install -y -q curl wget tar unzip jq qrencode openssl socat ca-certificates > /dev/null 2>&1
+    else
+        echo -e "${YELLOW}! 未识别的系统 ($OS_ID)，跳过自动安装依赖，请确保已安装 curl unzip jq openssl。${PLAIN}"
     fi
+    # 校验必需工具，缺失则明确报错，避免后续静默失败
+    local missing=()
+    for cmd in curl unzip jq openssl shuf; do
+        command -v "$cmd" > /dev/null 2>&1 || missing+=("$cmd")
+    done
+    if (( ${#missing[@]} > 0 )); then
+        echo -e "${RED}[错误]${PLAIN} 以下必需工具安装失败: ${missing[*]}"
+        echo -e "        请手动安装后重试，例如: ${CYAN}apt-get install -y ${missing[*]}${PLAIN}"
+        exit 1
+    fi
+    command -v qrencode > /dev/null 2>&1 || echo -e "${YELLOW}! qrencode 未安装，将不显示二维码（不影响使用）。${PLAIN}"
     echo -e "${GREEN}✓ 基础工具包就绪。${PLAIN}"
 }
 
@@ -125,19 +140,24 @@ install_xray_reality() {
     mkdir -p /usr/local/bin
     
     # 获取 Xray 官方最新版本
-    LATEST_VER=$(curl -s https://api.github.com/repos/XTLS/Xray-core/releases/latest | jq -r .tag_name)
-    [[ -z "$LATEST_VER" ]] && LATEST_VER="v26.10.10"
+    LATEST_VER=$(curl -sm 10 https://api.github.com/repos/XTLS/Xray-core/releases/latest | jq -r '.tag_name // empty' 2>/dev/null)
+    [[ -z "$LATEST_VER" || "$LATEST_VER" == "null" ]] && LATEST_VER="v26.10.10"
+    echo -e "    Xray 版本: ${CYAN}${LATEST_VER}${PLAIN}"
     
-    TMP_ZIP="/tmp/xray.zip"
+    TMP_ZIP=$(mktemp /tmp/xray.XXXXXX)
     DOWNLOAD_URL="https://github.com/XTLS/Xray-core/releases/download/${LATEST_VER}/Xray-linux-${XRAY_ARCH}.zip"
     
-    curl -sL "$DOWNLOAD_URL" -o "$TMP_ZIP"
-    if [[ ! -s "$TMP_ZIP" ]]; then
+    if ! curl -fsSL "$DOWNLOAD_URL" -o "$TMP_ZIP" || [[ ! -s "$TMP_ZIP" ]]; then
+        rm -f "$TMP_ZIP"
         echo -e "${RED}[错误]${PLAIN} 下载 Xray 核心失败，请检查 VPS 外网连通性！"
         exit 1
     fi
     
-    unzip -q -o "$TMP_ZIP" -d /usr/local/bin/ xray
+    if ! unzip -q -o "$TMP_ZIP" xray -d /usr/local/bin/; then
+        rm -f "$TMP_ZIP"
+        echo -e "${RED}[错误]${PLAIN} 解压 Xray 核心失败（下载文件可能不完整），请重试！"
+        exit 1
+    fi
     chmod +x /usr/local/bin/xray
     rm -f "$TMP_ZIP"
     
@@ -145,8 +165,13 @@ install_xray_reality() {
     
     # 自动生成密钥与 UUID
     KEYS=$(/usr/local/bin/xray x25519)
-    PRIVATE_KEY=$(echo "$KEYS" | grep -i "PrivateKey" | awk '{print $2}')
-    PUBLIC_KEY=$(echo "$KEYS" | grep -i "Password" | awk '{print $3}')
+    PRIVATE_KEY=$(echo "$KEYS" | grep -iE '^private ?key' | head -n1 | awk -F': *' '{print $NF}' | tr -d '[:space:]')
+    PUBLIC_KEY=$(echo "$KEYS" | grep -iE '^(public ?key|password)' | head -n1 | awk -F': *' '{print $NF}' | tr -d '[:space:]')
+    if [[ -z "$PRIVATE_KEY" || -z "$PUBLIC_KEY" ]]; then
+        echo -e "${RED}[错误]${PLAIN} 生成 Reality 密钥失败，xray x25519 输出如下："
+        echo "$KEYS"
+        exit 1
+    fi
     UUID=$(cat /proc/sys/kernel/random/uuid)
     SHORT_ID=$(openssl rand -hex 4)
     
@@ -218,6 +243,7 @@ Description=AntiVPN Xray-core Service
 After=network.target
 
 [Service]
+ExecStartPre=-/bin/sh -c 'command -v iptables >/dev/null 2>&1 && { iptables -C INPUT -p tcp --dport ${LISTEN_PORT} -j ACCEPT 2>/dev/null || iptables -I INPUT -p tcp --dport ${LISTEN_PORT} -j ACCEPT; }'
 ExecStart=/usr/local/bin/xray run -config ${CONFIG_FILE}
 Restart=always
 RestartSec=3
@@ -229,14 +255,22 @@ EOF
 
     systemctl daemon-reload
     systemctl enable antivpn > /dev/null 2>&1
-    systemctl restart antivpn
 
-    # 放行系统防火墙端口
+    # 放行系统防火墙端口（iptables 规则由 systemd 每次启动时自动补上，重启不丢）
     if command -v ufw > /dev/null 2>&1; then
         ufw allow ${LISTEN_PORT}/tcp > /dev/null 2>&1
     fi
-    if command -v iptables > /dev/null 2>&1; then
-        iptables -I INPUT -p tcp --dport ${LISTEN_PORT} -j ACCEPT > /dev/null 2>&1
+    if command -v firewall-cmd > /dev/null 2>&1 && firewall-cmd --state > /dev/null 2>&1; then
+        firewall-cmd --permanent --add-port=${LISTEN_PORT}/tcp > /dev/null 2>&1
+        firewall-cmd --reload > /dev/null 2>&1
+    fi
+
+    systemctl restart antivpn
+    sleep 2
+    if ! systemctl is-active --quiet antivpn; then
+        echo -e "${RED}[错误]${PLAIN} Xray 服务启动失败，最近日志如下："
+        journalctl -u antivpn -n 20 --no-pager
+        exit 1
     fi
     
     # 生成 VLESS 链接
@@ -260,7 +294,14 @@ EOF
 bash /usr/local/etc/antivpn/install.sh
 EOF
     chmod +x /usr/local/bin/vpn
-    cp "$0" /usr/local/etc/antivpn/install.sh 2>/dev/null || true
+    # 通过 bash <(curl ...) 运行时 $0 不是真实文件，因此从仓库下载一份到本地
+    if ! curl -fsSL "$SCRIPT_URL" -o "${CONFIG_DIR}/install.sh"; then
+        if [[ -f "$0" ]]; then
+            cp "$0" "${CONFIG_DIR}/install.sh"
+        else
+            echo -e "${YELLOW}! 下载管理脚本失败，'vpn' 快捷命令暂不可用，可重新运行一键安装命令。${PLAIN}"
+        fi
+    fi
 
     echo -e "${GREEN}✓ Xray Reality 服务启动成功！${PLAIN}"
 }
@@ -289,7 +330,11 @@ show_node_info() {
     echo -e "${CYAN}${VLESS_URL}${PLAIN}"
     echo ""
     echo -e " 📱 ${YELLOW}${BOLD}【手机扫码一键导入 (iPhone小火箭 / 安卓)】${PLAIN}:"
-    qrencode -t UTF8 "$VLESS_URL"
+    if command -v qrencode > /dev/null 2>&1; then
+        qrencode -t UTF8 "$VLESS_URL"
+    else
+        echo -e " ${YELLOW}(未安装 qrencode，无法显示二维码，请直接复制上方链接)${PLAIN}"
+    fi
     echo ""
     echo -e "${PURPLE}${BOLD}──────────────────────────────────────────────────────────────────${PLAIN}"
     echo -e " 💻 ${BOLD}【Windows / macOS 推荐客户端 - v2rayN】${PLAIN}:"
@@ -298,7 +343,7 @@ show_node_info() {
     echo -e " 3. 底部勾选 ${GREEN}【启用Tun模式】${PLAIN} 与 ${GREEN}【自动配置系统代理】${PLAIN} 即可全系统加速。"
     echo -e "${PURPLE}${BOLD}──────────────────────────────────────────────────────────────────${PLAIN}"
     echo -e " 💡 ${BOLD}提示:${PLAIN} 随时输入 ${GREEN}${BOLD}vpn${PLAIN} 命令即可重新调出此菜单与二维码。"
-    echo -e " 🎁 ${BOLD}高性价比 VPS 购买推荐:${PLAIN} ${YELLOW}${AFF_VPS_URL}${PLAIN}"
+    echo -e " 🎁 ${BOLD}高性价比 VPS 购买推荐:${PLAIN} ${YELLOW}${AFF_VPS_URL}${PLAIN} (推广链接)"
     echo -e " 📺 ${BOLD}视频教程 & 常见问题:${PLAIN} ${BLUE}${YOUTUBE_CHANNEL}${PLAIN}"
     echo -e "${GREEN}${BOLD}══════════════════════════════════════════════════════════════════${PLAIN}"
     echo ""
@@ -309,6 +354,8 @@ uninstall_all() {
     echo -e "${YELLOW}确定要完全卸载 AntiVPN 及其节点服务吗？[y/N]:${PLAIN} "
     read -rp "" confirm
     if [[ "$confirm" == "y" || "$confirm" == "Y" ]]; then
+        local OLD_PORT=""
+        [[ -f "$INFO_FILE" ]] && OLD_PORT=$(source "$INFO_FILE"; echo "$LISTEN_PORT")
         systemctl stop antivpn > /dev/null 2>&1
         systemctl disable antivpn > /dev/null 2>&1
         rm -f /etc/systemd/system/antivpn.service
@@ -316,6 +363,14 @@ uninstall_all() {
         rm -rf "$CONFIG_DIR"
         rm -f /usr/local/bin/vpn
         rm -f /usr/local/bin/xray
+        if [[ -n "$OLD_PORT" ]]; then
+            command -v iptables > /dev/null 2>&1 && iptables -D INPUT -p tcp --dport "$OLD_PORT" -j ACCEPT > /dev/null 2>&1
+            command -v ufw > /dev/null 2>&1 && ufw delete allow "${OLD_PORT}/tcp" > /dev/null 2>&1
+            if command -v firewall-cmd > /dev/null 2>&1 && firewall-cmd --state > /dev/null 2>&1; then
+                firewall-cmd --permanent --remove-port="${OLD_PORT}/tcp" > /dev/null 2>&1
+                firewall-cmd --reload > /dev/null 2>&1
+            fi
+        fi
         echo -e "${GREEN}✓ AntiVPN 已彻底卸载清理干净！${PLAIN}"
     else
         echo -e "${BLUE}已取消卸载。${PLAIN}"

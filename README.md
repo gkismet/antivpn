@@ -4,26 +4,38 @@
 [![Platform](https://img.shields.io/badge/Platform-Ubuntu%20%7C%20Debian%20%7C%20CentOS%20%7C%20AlmaLinux-green.svg)]()
 [![Protocol](https://img.shields.io/badge/Protocol-VLESS--Reality-orange.svg)]()
 [![Optimization](https://img.shields.io/badge/Acceleration-Linux%20Kernel%20BBR-purple.svg)]()
-[![YouTube Video](https://img.shields.io/badge/YouTube-完整实操视频教程-red?logo=youtube)](https://youtu.be/1YFYq-bukoo)
+[![YouTube Video](https://img.shields.io/badge/YouTube-完整实操视频教程-red?logo=youtube)](https://youtu.be/1YFYq-buko0)
 
 > 专为 **外贸办公、科研检索、海外 AI 大模型开发（Antigravity、ChatGPT、Claude、Cursor）** 设计的轻量级自建节点工具。  
 > **真正小白化**：免自购域名、免配 SSL 证书、无感 TLS 伪装、抗 GFW DPI 封锁，一键生成全平台可用配置！
 > 
-> 📺 **配套手把手视频教程**：[https://youtu.be/1YFYq-bukoo](https://youtu.be/1YFYq-bukoo)
+> 📺 **配套手把手视频教程**：[https://youtu.be/1YFYq-buko0](https://youtu.be/1YFYq-buko0)
 
 ---
 
-## 🎁 特惠 VPS 推荐通道（支持支付宝 / 微信）
+## 🎁 第一步：准备一台 VPS（3 分钟选好）
 
-自建独享节点最重要的一步是拥有一台干净、稳定的海外 VPS 服务器。推荐使用以下高性价比通道：
+自建独享节点最重要的一步是拥有一台干净、稳定的海外 VPS。我自己视频里用的是 **NovixLink 原生双 ISP 住宅 IP**：
 
-| 云厂商 | 特点与推荐机房 | 专属优惠通道 |
-| :--- | :--- | :--- |
-| **NovixLink (推荐首选)** | **原生双ISP 纯净住宅IP**（通过所有欺诈库检测，被识别为美国家庭宽带）、**中国大陆优化高速直连**、流媒体与海外 AI (ChatGPT/Claude/Antigravity) 100% 满血解锁，告别封号与拦截 | [👉 点击前往 NovixLink 优惠购买](https://novixlink.com/aff.php?aff=580) |
+### 👉 [点击前往 NovixLink 购买（支持支付宝 / 微信）](https://novixlink.com/aff.php?aff=580)
 
-> 🌟 **为什么必须选择【原生双ISP住宅IP】？**  
-> 普通机房 VPS（数据中心 IP）早已被 OpenAI、Claude、Google、TikTok 等海外平台的风控系统列入黑名单，极易触发验证码、Access Denied 甚至封号！  
-> **NovixLink 的原生双 ISP 住宅 IP** 在各大 IP 数据库中均显示为真实美国家庭住宅宽带，配合中国优化网络直连，兼具**极低延迟**与**最高等级安全信用度**，是外贸、AI 开发与跨国办公的绝对首选。
+**不知道选哪个？直接照抄：**（选「美国 NTT / GTT 双 ISP 住宅 IP 中国优化 VPS」分类）
+
+| 你的情况 | 推荐套餐 | 配置 | 月付价格 |
+| :--- | :--- | :--- | :--- |
+| ⭐ 个人自用（1~3 台设备，够用） | **LAX-CUPN Lite 轻量版**（NTT） | 1 核 / 768MB / 10GB SSD / 100Mbps / 每月 500GB | **$7.99 CAD**（约 ¥40） |
+| 多设备、经常看视频 | LAX-CUPN / CUPG Basic 基础版 | 1 核 / 1GB / 10GB SSD / 125Mbps / 每月 1000GB | $12.99 CAD（约 ¥65） |
+| 多人共用 / 大流量 | LAX-CUPN / CUPG Pro 进阶版 | 2 核 / 2GB / 30GB SSD / 150Mbps / 每月 2000GB | $22.99 CAD（约 ¥115） |
+
+> ⚠️ 价格为 2026 年 11 月官网月付起价，以官网为准。住宅 IP 套餐经常**售罄**：NTT 与 GTT 两条线路配置和价格相同，哪个有货买哪个；都没货可点「预订补货」。
+
+> 💡 系统选 **Debian 12 或 Ubuntu 22.04/24.04**，开机后用 SSH 登录，复制下方一行命令即可。
+
+> 🌟 **为什么选【原生双 ISP 住宅 IP】而不是普通机房 VPS？**<br>
+> 普通机房 VPS（数据中心 IP）在 OpenAI、Claude、Google 等平台的风控里更容易触发验证码、Access Denied 甚至封号。<br>
+> 住宅 IP 在主流 IP 数据库中通常被识别为家庭宽带，风控友好度明显更高（实测截图见视频）。适合外贸、AI 开发与跨国办公。
+
+> 📢 **推广说明**：上方 NovixLink 链接为推广链接，通过它购买我会获得一定返佣，你的价格不变。这是维护本项目和持续更新视频的主要动力，感谢支持 🙏
 
 ---
 
