@@ -9,7 +9,8 @@
 > 专为 **外贸办公、科研检索、海外 AI 大模型开发（Antigravity、ChatGPT、Claude、Cursor）** 设计的轻量级自建节点工具。  
 > **真正小白化**：免自购域名、免配 SSL 证书、无感 TLS 伪装、抗 GFW DPI 封锁，一键生成全平台可用配置！
 > 
-> 📺 **配套手把手视频教程**：[https://youtu.be/1YFYq-buko0](https://youtu.be/1YFYq-buko0)
+> 📺 **配套手把手视频教程**：[https://youtu.be/1YFYq-buko0](https://youtu.be/1YFYq-buko0)  
+> 🌐 **图文教程网站**：[https://lab.gkismet.com/antivpn/](https://lab.gkismet.com/antivpn/)
 
 ---
 
@@ -19,15 +20,17 @@
 
 ### 👉 [点击前往 NovixLink 购买（支持支付宝 / 微信）](https://novixlink.com/aff.php?aff=580)
 
-**不知道选哪个？直接照抄：**（选「美国 NTT / GTT 双 ISP 住宅 IP 中国优化 VPS」分类）
+📊 **实时库存 + 三条线路详细对比**：<https://lab.gkismet.com/antivpn/plans.html>
+
+**不知道选哪个？直接照抄：**
 
 | 你的情况 | 推荐套餐 | 配置 | 月付价格 |
 | :--- | :--- | :--- | :--- |
-| ⭐ 个人自用（1~3 台设备，够用） | **LAX-CUPN Lite 轻量版**（NTT） | 1 核 / 768MB / 10GB SSD / 100Mbps / 每月 500GB | **$7.99 CAD**（约 ¥40） |
-| 多设备、经常看视频 | LAX-CUPN / CUPG Basic 基础版 | 1 核 / 1GB / 10GB SSD / 125Mbps / 每月 1000GB | $12.99 CAD（约 ¥65） |
-| 多人共用 / 大流量 | LAX-CUPN / CUPG Pro 进阶版 | 2 核 / 2GB / 30GB SSD / 150Mbps / 每月 2000GB | $22.99 CAD（约 ¥115） |
+| ⭐ 现在就想用（有货） | **LAX-BGP Lite 轻量版**（CG 线路） | 1 核 / 768MB / 10GB SSD / 1Gbps / 每月 1000GB | **$5.99 CAD**（约 ¥30） |
+| 大流量 / 多人共用（有货） | LAX-BGP Basic 基础版（CG 线路） | 1 核 / 1GB / 10GB SSD / 1.25Gbps / 每月 2000GB | $9.99 CAD（约 ¥50） |
+| 人在中国大陆、看重晚高峰速度 | LAX-CUPN / CUPG Lite（NTT / GTT 线路） | 1 核 / 768MB / 10GB SSD / 100Mbps / 每月 500GB | $7.99 CAD（约 ¥40）· 目前售罄，可预订补货 |
 
-> ⚠️ 价格为 2026 年 11 月官网月付起价，以官网为准。住宅 IP 套餐经常**售罄**：NTT 与 GTT 两条线路配置和价格相同，哪个有货买哪个；都没货可点「预订补货」。
+> ⚠️ **CG 线路没有中国大陆线路优化**，大陆直连在晚高峰可能偏慢；NTT / GTT 线路回程走联通 9929 + 移动 CMIN2，但经常售罄。价格与库存为 2026-11-24 官网信息，以官网为准。
 
 > 💡 系统选 **Debian 12 或 Ubuntu 22.04/24.04**，开机后用 SSH 登录，复制下方一行命令即可。
 
