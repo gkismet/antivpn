@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://gkismet.github.io/antivpn/sitemap.xml

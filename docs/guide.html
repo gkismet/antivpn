@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>VLESS-Reality 一键部署教程（免域名免证书）| AntiVPN</title>
+<meta name="description" content="图文教程：SSH 登录 VPS，运行一行命令 30 秒部署 VLESS-Reality + BBR，再用 v2rayN、v2rayNG、Shadowrocket 导入，开启 TUN 模式让终端与 IDE 全局生效。">
+<link rel="canonical" href="https://gkismet.github.io/antivpn/guide.html">
+<link rel="stylesheet" href="assets/style.css">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"HowTo","name":"一键部署 VLESS-Reality 节点","totalTime":"PT5M","step":[
+{"@type":"HowToStep","name":"购买 VPS","text":"购买一台 Debian 12 或 Ubuntu 22.04+ 的 VPS。"},
+{"@type":"HowToStep","name":"SSH 登录","text":"用 root 账号 SSH 登录 VPS。"},
+{"@type":"HowToStep","name":"运行一键脚本","text":"粘贴一行安装命令，等待约 30 秒。"},
+{"@type":"HowToStep","name":"导入客户端","text":"复制 vless:// 链接或扫码导入 v2rayN / v2rayNG / Shadowrocket。"}]}
+</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <a class="logo" href="./">Anti<span>VPN</span></a>
+    <nav class="nav">
+      <a href="./">首页</a>
+      <a href="plans.html">选 VPS</a>
+      <a href="guide.html" aria-current="page">部署教程</a>
+      <a href="faq.html">常见问题</a>
+      <a href="https://github.com/gkismet/antivpn" rel="noopener">GitHub</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="hero">
+    <h1>一键部署教程</h1>
+    <p class="lead">全程约 5 分钟，不需要域名、不需要证书，也不需要懂 Linux。</p>
+  </section>
+
+  <section>
+    <h2>第 1 步：准备一台 VPS</h2>
+    <p>系统选 <strong>Debian 12</strong> 或 <strong>Ubuntu 22.04 / 24.04</strong>，内存 512MB 以上即可。不知道选哪个，看 <a href="plans.html">VPS 选购指南</a>。</p>
+    <p>购买后会收到服务器的 <strong>IP 地址</strong>和 <strong>root 密码</strong>。</p>
+  </section>
+
+  <section>
+    <h2>第 2 步：SSH 登录服务器</h2>
+    <p>Windows 10/11 和 macOS 自带 SSH。打开「终端」或「PowerShell」，输入（把 IP 换成你的）：</p>
+    <pre><code>ssh root@你的服务器IP</code></pre>
+    <p class="muted">第一次连接会询问是否信任，输入 <code>yes</code> 回车；输入密码时屏幕不显示字符，是正常的。</p>
+  </section>
+
+  <section>
+    <h2>第 3 步：运行一键脚本</h2>
+    <p>登录后粘贴下面整行命令并回车，在菜单中输入 <code>1</code>：</p>
+    <pre><code>curl -fsSL https://raw.githubusercontent.com/gkismet/antivpn/main/install.sh -o install.sh &amp;&amp; bash install.sh</code></pre>
+    <p>脚本会自动完成：</p>
+    <ol>
+      <li>开启 Linux 原生 BBR 拥塞控制</li>
+      <li>安装官方最新 Xray-core</li>
+      <li>生成 Reality 密钥、UUID，随机选择高位端口</li>
+      <li>配置 systemd 开机自启，放行防火墙端口（重启后自动恢复）</li>
+      <li>打印 <code>vless://</code> 导入链接和二维码</li>
+    </ol>
+    <p class="note">以后随时在服务器上输入 <code>vpn</code>，就能重新查看链接、二维码，或重启、卸载。</p>
+  </section>
+
+  <section id="client">
+    <h2>第 4 步：导入客户端</h2>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>平台</th><th>客户端</th><th>怎么导入</th></tr></thead>
+        <tbody>
+          <tr><td>Windows / macOS</td><td><a href="https://github.com/2dust/v2rayN/releases" rel="noopener">v2rayN</a></td><td>复制 vless:// 链接，在主界面按 Ctrl+V；底部勾选「启用 Tun 模式」</td></tr>
+          <tr><td>Android</td><td><a href="https://github.com/2dust/v2rayNG/releases" rel="noopener">v2rayNG</a></td><td>右上角 + → 扫描二维码，右下角开启连接</td></tr>
+          <tr><td>iOS</td><td>Shadowrocket（小火箭）</td><td>需海外 Apple ID 购买；打开后扫描终端二维码</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <h3>为什么要开 TUN 模式？</h3>
+    <p>普通「系统代理」只对浏览器生效。开启 TUN 模式后，终端命令、Git、Python、Cursor / Antigravity 等 IDE 都会走代理，开发时不用逐个配置。</p>
+  </section>
+
+  <section>
+    <h2>视频版</h2>
+    <div class="video">
+      <iframe src="https://www.youtube-nocookie.com/embed/yVSFCVTAA4Y" title="保姆级自建节点视频教程" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+    <p class="muted">遇到问题先看 <a href="faq.html">常见问题</a>，或到 <a href="https://github.com/gkismet/antivpn/issues" rel="noopener">GitHub Issues</a> 反馈。</p>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <p class="disclosure">📢 推广说明：本站的 NovixLink 链接为推广链接，通过它购买作者会获得一定返佣，你的价格不变。价格与库存以官网为准。</p>
+    <p class="disclosure">⚖️ 本项目仅用于学习、开发测试与合法的跨境办公用途，请遵守当地法律法规。</p>
+    <p>© 2026 AntiVPN · <a href="https://github.com/gkismet/antivpn" rel="noopener">GitHub</a></p>
+  </div>
+</footer>
+<script src="assets/site.js"></script>
+</body>
+</html>

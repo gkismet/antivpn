@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>住宅 IP VPS 怎么选？NovixLink NTT / GTT / CG 线路对比与实时库存</title>
+<meta name="description" content="NovixLink 住宅 IP VPS 三条线路对比：NTT、GTT（中国大陆回程优化）与 CG（国际带宽）。配置、价格、库存状态一览，附选购建议。">
+<link rel="canonical" href="https://gkismet.github.io/antivpn/plans.html">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <a class="logo" href="./">Anti<span>VPN</span></a>
+    <nav class="nav">
+      <a href="./">首页</a>
+      <a href="plans.html" aria-current="page">选 VPS</a>
+      <a href="guide.html">部署教程</a>
+      <a href="faq.html">常见问题</a>
+      <a href="https://github.com/gkismet/antivpn" rel="noopener">GitHub</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="hero">
+    <h1>住宅 IP VPS 怎么选？</h1>
+    <p class="lead">我自己用的是 NovixLink 的住宅 IP VPS。下面是三条线路的区别、价格和库存，<strong>库存更新于 <span data-stock-updated>2026-11-24</span></strong>。</p>
+    <div class="btn-row">
+      <a class="btn btn-primary" href="https://novixlink.com/aff.php?aff=580" rel="sponsored noopener" target="_blank">前往 NovixLink 官网 →</a>
+    </div>
+  </section>
+
+  <section>
+    <h2>30 秒决定买哪个</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>⭐ 现在就想用</h3>
+        <p class="muted"><strong>CG 线路 LAX-BGP Lite</strong>，$5.99 CAD/月（约 ¥30）。住宅 IP、1Gbps 端口、每月 1000GB，目前有货。</p>
+        <p class="muted">注意：没有中国大陆线路优化，大陆直连在晚高峰可能偏慢；在海外使用或对速度不敏感时没有影响。</p>
+      </div>
+      <div class="card">
+        <h3>在中国大陆直连，追求速度</h3>
+        <p class="muted"><strong>NTT / GTT 线路 Lite</strong>，$7.99 CAD/月（约 ¥40）。回程走联通 9929 + 移动 CMIN2，晚高峰更稳。</p>
+        <p class="muted">这两条线路经常售罄，可以在官网点「预订补货」。两条配置价格相同，哪个有货买哪个。</p>
+      </div>
+      <div class="card">
+        <h3>多人共用 / 大流量</h3>
+        <p class="muted">选同线路的 <strong>Basic 或 Pro</strong>。CG Basic 每月 2000GB、$9.99 CAD，是流量性价比最高的一档。</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>全部套餐与库存</h2>
+    <div data-stock="cg,ntt,gtt">
+      <p class="muted">正在加载库存…</p>
+    </div>
+    <p class="note">💡 购买时系统选 <strong>Debian 12</strong> 或 <strong>Ubuntu 22.04 / 24.04</strong>。开机后按 <a href="guide.html">部署教程</a> 运行一行命令即可。</p>
+  </section>
+
+  <section>
+    <h2>三条线路的区别</h2>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th></th><th>NTT 线路</th><th>GTT 线路</th><th>CG 线路</th></tr></thead>
+        <tbody>
+          <tr><td>IP 类型</td><td>美国双 ISP 原生住宅 IP</td><td>美国双 ISP 原生住宅 IP</td><td>美国双 ISP 原生住宅 IP</td></tr>
+          <tr><td>中国大陆优化</td><td>回程联通 9929 + 移动 CMIN2</td><td>回程联通 9929 + 移动 CMIN2</td><td>无（国际带宽）</td></tr>
+          <tr><td>端口带宽（Lite）</td><td>100Mbps</td><td>100Mbps</td><td>1Gbps</td></tr>
+          <tr><td>月流量（Lite）</td><td>500GB</td><td>500GB</td><td>1000GB</td></tr>
+          <tr><td>起价</td><td>$7.99 CAD</td><td>$7.99 CAD</td><td>$5.99 CAD</td></tr>
+          <tr><td>适合</td><td colspan="2">人在中国大陆、看重晚高峰速度</td><td>人在海外，或预算优先、流量需求大</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="muted">信息来自 NovixLink 官网商品页，价格为月付起价（CAD），人民币为官网标注的约数。</p>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <p class="disclosure">📢 推广说明：本站的 NovixLink 链接为推广链接，通过它购买作者会获得一定返佣，你的价格不变。价格与库存以官网为准。</p>
+    <p class="disclosure">⚖️ 本项目仅用于学习、开发测试与合法的跨境办公用途，请遵守当地法律法规。</p>
+    <p>© 2026 AntiVPN · <a href="https://github.com/gkismet/antivpn" rel="noopener">GitHub</a></p>
+  </div>
+</footer>
+<script src="assets/site.js"></script>
+</body>
+</html>

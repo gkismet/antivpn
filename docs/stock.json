@@ -1,0 +1,42 @@
+{
+  "updated": "2026-11-24",
+  "aff": "https://novixlink.com/aff.php?aff=580",
+  "lines": [
+    {
+      "id": "cg",
+      "name": "CG 线路 · 住宅 IP · 国际带宽",
+      "china": false,
+      "url": "https://novixlink.com/store/us-la-isp",
+      "plans": [
+        { "name": "LAX-BGP Lite 轻量版", "spec": "1 核 / 768MB / 10GB SSD / 1Gbps / 1000GB 每月", "price": "$5.99", "cny": "约 ¥30", "stock": "ok" },
+        { "name": "LAX-BGP Basic 基础版", "spec": "1 核 / 1GB / 10GB SSD / 1.25Gbps / 2000GB 每月", "price": "$9.99", "cny": "约 ¥50", "stock": "ok" },
+        { "name": "LAX-BGP Pro 进阶版", "spec": "2 核 / 2GB / 30GB SSD / 1.5Gbps / 4000GB 每月", "price": "$18.99", "cny": "约 ¥95", "stock": "low" },
+        { "name": "LAX-BGP Ultra 终极版", "spec": "4 核 / 4GB / 40GB SSD / 2Gbps / 8000GB 每月", "price": "$33.99", "cny": "约 ¥170", "stock": "low" }
+      ]
+    },
+    {
+      "id": "ntt",
+      "name": "NTT 线路 · 住宅 IP · 中国大陆回程优化",
+      "china": true,
+      "url": "https://novixlink.com/store/nttispipvps",
+      "plans": [
+        { "name": "LAX-CUPN Lite 轻量版", "spec": "1 核 / 768MB / 10GB SSD / 100Mbps / 500GB 每月", "price": "$7.99", "cny": "约 ¥40", "stock": "out" },
+        { "name": "LAX-CUPN Basic 基础版", "spec": "1 核 / 1GB / 10GB SSD / 125Mbps / 1000GB 每月", "price": "$12.99", "cny": "约 ¥65", "stock": "out" },
+        { "name": "LAX-CUPN Pro 进阶版", "spec": "2 核 / 2GB / 30GB SSD / 150Mbps / 2000GB 每月", "price": "$22.99", "cny": "约 ¥115", "stock": "out" },
+        { "name": "LAX-CUPN Ultra 终极版", "spec": "4 核 / 4GB / 40GB SSD / 200Mbps / 4000GB 每月", "price": "$42.99", "cny": "约 ¥215", "stock": "out" }
+      ]
+    },
+    {
+      "id": "gtt",
+      "name": "GTT 线路 · 住宅 IP · 中国大陆回程优化",
+      "china": true,
+      "url": "https://novixlink.com/store/us-lacup-isp",
+      "plans": [
+        { "name": "LAX-CUPG Lite 轻量版", "spec": "1 核 / 768MB / 10GB SSD / 100Mbps / 500GB 每月", "price": "$7.99", "cny": "约 ¥40", "stock": "out" },
+        { "name": "LAX-CUPG Basic 基础版", "spec": "1 核 / 1GB / 10GB SSD / 125Mbps / 1000GB 每月", "price": "$12.99", "cny": "约 ¥65", "stock": "out" },
+        { "name": "LAX-CUPG Pro 进阶版", "spec": "2 核 / 2GB / 30GB SSD / 150Mbps / 2000GB 每月", "price": "$22.99", "cny": "约 ¥115", "stock": "out" },
+        { "name": "LAX-CUPG Ultra 终极版", "spec": "4 核 / 4GB / 40GB SSD / 200Mbps / 4000GB 每月", "price": "$42.99", "cny": "约 ¥215", "stock": "out" }
+      ]
+    }
+  ]
+}

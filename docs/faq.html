@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>常见问题与报错排查 | AntiVPN 自建 VLESS-Reality 节点</title>
+<meta name="description" content="AntiVPN 常见问题：连不上怎么办、vpn 命令找不到、BBR 开启失败、ChatGPT 仍提示 Access Denied、住宅 IP 售罄怎么办等，逐条给出排查步骤。">
+<link rel="canonical" href="https://gkismet.github.io/antivpn/faq.html">
+<link rel="stylesheet" href="assets/style.css">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"部署成功但客户端连不上怎么办？","acceptedAnswer":{"@type":"Answer","text":"先在服务器运行 systemctl status antivpn 确认服务在运行，再检查云服务商控制台的安全组是否放行了节点端口，最后确认客户端时间与服务器时间相差不超过 90 秒。"}},
+{"@type":"Question","name":"住宅 IP 套餐售罄怎么办？","acceptedAnswer":{"@type":"Answer","text":"NTT 和 GTT 线路配置价格相同，哪个有货买哪个；都售罄时可在官网预订补货，或先选有货的 CG 线路（无中国大陆优化）。"}},
+{"@type":"Question","name":"需要购买域名和证书吗？","acceptedAnswer":{"@type":"Answer","text":"不需要。Reality 协议借用公开网站的 TLS 握手，无需自己的域名和证书。"}}]}
+</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <a class="logo" href="./">Anti<span>VPN</span></a>
+    <nav class="nav">
+      <a href="./">首页</a>
+      <a href="plans.html">选 VPS</a>
+      <a href="guide.html">部署教程</a>
+      <a href="faq.html" aria-current="page">常见问题</a>
+      <a href="https://github.com/gkismet/antivpn" rel="noopener">GitHub</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="hero">
+    <h1>常见问题与报错排查</h1>
+    <p class="lead">按出现频率排列。没找到答案？到 <a href="https://github.com/gkismet/antivpn/issues" rel="noopener">GitHub Issues</a> 或视频评论区留言。</p>
+  </section>
+
+  <section>
+    <h2>部署与连接</h2>
+    <details open>
+      <summary>部署成功，但客户端连不上</summary>
+      <ol>
+        <li>在服务器运行 <code>systemctl status antivpn</code>，确认显示 <code>active (running)</code>。不是的话运行 <code>journalctl -u antivpn -n 30</code> 看报错。</li>
+        <li>到 VPS 商家控制台检查<strong>安全组 / 防火墙</strong>，放行脚本显示的端口（TCP）。</li>
+        <li>确认电脑/手机<strong>系统时间</strong>准确，与服务器相差超过 90 秒会导致握手失败。</li>
+        <li>重新输入 <code>vpn</code> → 选 2，复制最新的链接重新导入，避免复制时漏字符。</li>
+      </ol>
+    </details>
+    <details>
+      <summary>输入 vpn 提示 command not found</summary>
+      <p>旧版本脚本有这个问题，已修复。重新运行一次安装命令即可（会生成新的节点链接，记得重新导入）。</p>
+    </details>
+    <details>
+      <summary>提示「以下必需工具安装失败: unzip …」</summary>
+      <p>通常是软件源暂时不可用。Debian/Ubuntu 运行 <code>apt-get update &amp;&amp; apt-get install -y unzip jq curl</code>，CentOS 系运行 <code>yum install -y unzip jq curl</code>，然后重新运行脚本。</p>
+    </details>
+    <details>
+      <summary>BBR 开启失败</summary>
+      <p>一般是 VPS 使用 OpenVZ / LXC 等容器虚拟化，不允许修改内核参数。不影响节点使用，只是长距离传输少了加速。KVM 架构的 VPS 都可以开启。</p>
+    </details>
+    <details>
+      <summary>重启服务器后连不上</summary>
+      <p>新版脚本会在每次服务启动时自动补上防火墙规则。如果你用的是旧版，重新运行一次安装命令即可。</p>
+    </details>
+    <details>
+      <summary>需要买域名和 SSL 证书吗？</summary>
+      <p>不需要。Reality 协议借用公开网站的 TLS 握手，不需要自己的域名和证书。</p>
+    </details>
+  </section>
+
+  <section>
+    <h2>VPS 与 IP</h2>
+    <details>
+      <summary>住宅 IP 套餐售罄怎么办？</summary>
+      <p>NTT 和 GTT 两条线路配置、价格相同，哪个有货买哪个；都售罄时可以在官网点「预订补货」，或者先选目前有货的 CG 线路（没有中国大陆线路优化）。实时库存见 <a href="plans.html">选 VPS</a> 页。</p>
+    </details>
+    <details>
+      <summary>用住宅 IP 了，ChatGPT / Claude 还是提示 Access Denied</summary>
+      <ol>
+        <li>确认客户端真的走了节点：浏览器打开 <code>ip.sb</code>，显示的应是 VPS 的 IP。</li>
+        <li>开启 <strong>TUN 模式</strong>，避免部分流量绕过代理。</li>
+        <li>清除该网站的 Cookie，或用无痕窗口重试。</li>
+        <li>仍然不行的话，可能是该 IP 曾被他人滥用。联系商家说明情况，按其 IP 判断标准和退款政策处理。</li>
+      </ol>
+    </details>
+    <details>
+      <summary>CG 线路和 NTT/GTT 线路怎么选？</summary>
+      <p>人在中国大陆、看重晚高峰速度，选有回程优化的 NTT/GTT；人在海外、预算优先或流量需求大，选 CG。详细对比见 <a href="plans.html">选 VPS</a>。</p>
+    </details>
+    <details>
+      <summary>一台 VPS 可以几个人用？</summary>
+      <p>Lite 套餐日常 1~3 台设备足够。多人共用或经常看高清视频，建议 Basic 以上，并留意每月流量。</p>
+    </details>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <p class="disclosure">📢 推广说明：本站的 NovixLink 链接为推广链接，通过它购买作者会获得一定返佣，你的价格不变。价格与库存以官网为准。</p>
+    <p class="disclosure">⚖️ 本项目仅用于学习、开发测试与合法的跨境办公用途，请遵守当地法律法规。</p>
+    <p>© 2026 AntiVPN · <a href="https://github.com/gkismet/antivpn" rel="noopener">GitHub</a></p>
+  </div>
+</footer>
+<script src="assets/site.js"></script>
+</body>
+</html>

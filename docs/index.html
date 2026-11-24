@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AntiVPN · 30 秒自建独享节点（住宅 IP + VLESS-Reality）</title>
+<meta name="description" content="一行命令在自己的 VPS 上部署独享 VLESS-Reality 节点：免域名、免证书、自动开启 BBR。附住宅 IP VPS 选购指南、实时库存、图文教程与常见问题。">
+<link rel="canonical" href="https://gkismet.github.io/antivpn/">
+<meta property="og:title" content="AntiVPN · 30 秒自建独享节点">
+<meta property="og:description" content="一行命令部署 VLESS-Reality，免域名免证书。住宅 IP VPS 选购指南与实时库存。">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://gkismet.github.io/antivpn/">
+<link rel="stylesheet" href="assets/style.css">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebSite","name":"AntiVPN","url":"https://gkismet.github.io/antivpn/","inLanguage":"zh-CN"}
+</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <a class="logo" href="./">Anti<span>VPN</span></a>
+    <nav class="nav">
+      <a href="./" aria-current="page">首页</a>
+      <a href="plans.html">选 VPS</a>
+      <a href="guide.html">部署教程</a>
+      <a href="faq.html">常见问题</a>
+      <a href="https://github.com/gkismet/antivpn" rel="noopener">GitHub</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="hero">
+    <div class="badges">
+      <span class="badge">开源 · MIT</span>
+      <span class="badge">VLESS + XTLS-Reality</span>
+      <span class="badge">BBR 加速</span>
+      <span class="badge">免域名 · 免证书</span>
+    </div>
+    <h1>30 秒，在自己的 VPS 上<br>部署一个独享节点</h1>
+    <p class="lead">一行开源命令，自动完成 Xray 安装、Reality 密钥生成、BBR 加速和防火墙放行，最后直接打印导入链接和二维码。搭配住宅 IP VPS，用 ChatGPT、Claude、Cursor 等 AI 工具时风控更友好。</p>
+    <div class="btn-row">
+      <a class="btn btn-primary" href="plans.html">第一步：选一台 VPS →</a>
+      <a class="btn btn-ghost" href="guide.html">查看部署教程</a>
+    </div>
+  </section>
+
+  <section>
+    <h2>三步搞定</h2>
+    <div class="grid">
+      <div class="card">
+        <div class="step-num">1</div>
+        <h3>买一台 VPS</h3>
+        <p class="muted">推荐住宅 IP VPS，月付 $5.99 CAD（约 ¥30）起。系统选 Debian 12 或 Ubuntu 22.04+。</p>
+        <a href="plans.html">看哪款有货 →</a>
+      </div>
+      <div class="card">
+        <div class="step-num">2</div>
+        <h3>运行一行命令</h3>
+        <p class="muted">SSH 登录后粘贴命令，约 30 秒完成部署，终端里直接显示 vless:// 链接和二维码。</p>
+        <a href="guide.html">复制命令 →</a>
+      </div>
+      <div class="card">
+        <div class="step-num">3</div>
+        <h3>导入客户端</h3>
+        <p class="muted">v2rayN / v2rayNG / Shadowrocket 导入链接或扫码即可使用，开启 TUN 模式后终端和 IDE 也全局生效。</p>
+        <a href="guide.html#client">客户端设置 →</a>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>视频教程</h2>
+    <div class="video">
+      <iframe src="https://www.youtube-nocookie.com/embed/z6ALPZ-yILA" title="自建 VLESS-Reality + BBR 节点视频教程" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+  </section>
+
+  <section>
+    <h2>为什么用住宅 IP，而不是普通机房 VPS？</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>普通机房 IP</h3>
+        <p class="muted">在 IP 数据库里被标记为数据中心。OpenAI、Claude、Google 等平台对这类 IP 的风控通常更严，更容易遇到验证码、Access Denied，甚至账号风险。</p>
+      </div>
+      <div class="card">
+        <h3>住宅 IP</h3>
+        <p class="muted">在主流 IP 数据库中通常被识别为家庭宽带，风控友好度明显更高，适合 AI 开发、外贸和跨境电商账号。</p>
+      </div>
+    </div>
+    <p class="note">当前库存更新于 <strong data-stock-updated>2026-11-24</strong>：有中国大陆优化的 NTT / GTT 线路暂时售罄，CG 线路有货。<a href="plans.html">查看完整对比 →</a></p>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <p class="disclosure">📢 推广说明：本站的 NovixLink 链接为推广链接，通过它购买作者会获得一定返佣，你的价格不变。价格与库存以官网为准。</p>
+    <p class="disclosure">⚖️ 本项目仅用于学习、开发测试与合法的跨境办公用途，请遵守当地法律法规。</p>
+    <p>© 2026 AntiVPN · <a href="https://github.com/gkismet/antivpn" rel="noopener">GitHub</a></p>
+  </div>
+</footer>
+<script src="assets/site.js"></script>
+</body>
+</html>
