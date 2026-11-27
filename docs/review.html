@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NovixLink 测评：住宅 IP VPS 值不值得买？NTT / GTT / CG 三条线路怎么选（2026）</title>
+<meta name="description" content="NovixLink 住宅 IP VPS 测评：三条线路（NTT、GTT、CG）的配置、价格、中国大陆回程、库存情况，优缺点和适合人群，附实测方法与购买建议。">
+<link rel="canonical" href="https://lab.gkismet.com/antivpn/review.html">
+<meta property="og:title" content="NovixLink 测评：住宅 IP VPS 值不值得买？">
+<meta property="og:description" content="三条线路的配置、价格、回程、库存与优缺点，附购买建议。">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://lab.gkismet.com/antivpn/review.html">
+<link rel="stylesheet" href="assets/style.css">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Article","headline":"NovixLink 测评：住宅 IP VPS 值不值得买？","inLanguage":"zh-CN","datePublished":"2026-11-27","dateModified":"2026-11-27","author":{"@type":"Organization","name":"AntiVPN"},"mainEntityOfPage":"https://lab.gkismet.com/antivpn/review.html"}
+</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <a class="logo" href="./">Anti<span>VPN</span></a>
+    <nav class="nav">
+      <a href="./">首页</a>
+      <a href="plans.html">选 VPS</a>
+      <a href="review.html" aria-current="page">测评</a>
+      <a href="guide.html">部署教程</a>
+      <a href="faq.html">常见问题</a>
+      <a href="https://github.com/gkismet/antivpn" rel="noopener">GitHub</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="hero">
+    <h1>NovixLink 测评：住宅 IP VPS 值不值得买？</h1>
+    <p class="lead">我的节点就搭在 NovixLink 上。这篇讲清楚它三条线路的区别、价格、优缺点和适合谁，帮你判断要不要买、买哪个。更新于 <strong>2026-11-27</strong>，价格与库存以官网为准。</p>
+    <div class="btn-row">
+      <a class="btn btn-primary" href="https://novixlink.com/aff.php?aff=580" rel="sponsored noopener" target="_blank">去 NovixLink 官网 →</a>
+      <a class="btn btn-ghost" href="#verdict">直接看结论</a>
+    </div>
+  </section>
+
+  <section id="verdict">
+    <h2>一句话结论</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>✅ 值得买，如果你</h3>
+        <ul>
+          <li>需要<strong>美国住宅 IP</strong>，用 ChatGPT、Claude、Cursor 等 AI 工具，或做外贸、跨境电商账号</li>
+          <li>只给自己或家人用，想要<strong>独享</strong>的节点</li>
+          <li>预算在每月 ¥30 到 ¥50 左右</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>❌ 不太适合，如果你</h3>
+        <ul>
+          <li>要建站、跑数据库，需要大硬盘（Lite 只有 10GB）</li>
+          <li>人在中国大陆、对晚高峰速度要求很高，<strong>又等不了补货</strong>（有回程优化的 NTT / GTT 经常售罄）</li>
+          <li>只需要普通机房 IP，那选更便宜的机房 VPS 就够了</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>NovixLink 是什么</h2>
+    <p>NovixLink 是一家卖 VPS 的服务商，主打产品是位于<strong>美国洛杉矶</strong>的<strong>双 ISP 原生住宅 IP</strong> VPS，价格以加元（CAD）计费。和常见机房 VPS 最大的区别是 IP 类型：在主流 IP 数据库里，它的 IP 通常被识别为家庭宽带，而不是数据中心。</p>
+    <p>为什么这很重要？OpenAI、Anthropic、Google 等平台对数据中心 IP 的风控普遍更严，更容易出现验证码、Access Denied 或账号风险。住宅 IP 在这方面友好得多。</p>
+  </section>
+
+  <section>
+    <h2>三条线路对比</h2>
+    <p>NovixLink 的住宅 IP VPS 分三条线路，硬件档位一样（Lite / Basic / Pro / Ultra），区别在<strong>网络线路</strong>：</p>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th></th><th>NTT 线路（LAX-CUPN）</th><th>GTT 线路（LAX-CUPG）</th><th>CG 线路（LAX-BGP）</th></tr></thead>
+        <tbody>
+          <tr><td>中国大陆回程</td><td>联通 9929 + 移动 CMIN2</td><td>联通 9929 + 移动 CMIN2</td><td>无优化（国际带宽）</td></tr>
+          <tr><td>Lite 配置</td><td colspan="2">1 核 / 768MB / 10GB SSD / 100Mbps / 每月 500GB</td><td>1 核 / 768MB / 10GB SSD / <strong>1Gbps</strong> / 每月 <strong>1000GB</strong></td></tr>
+          <tr><td>Lite 月付</td><td>$7.99 CAD（约 ¥40）</td><td>$7.99 CAD（约 ¥40）</td><td><strong>$5.99 CAD（约 ¥30）</strong></td></tr>
+          <tr><td>Basic 月付</td><td>$12.99 CAD</td><td>$12.99 CAD</td><td>$9.99 CAD（每月 2000GB）</td></tr>
+          <tr><td>库存情况</td><td colspan="2">经常售罄，可在官网「预订补货」</td><td>大多有货</td></tr>
+          <tr><td>适合</td><td colspan="2">人在中国大陆，看重晚高峰速度</td><td>人在海外，或预算优先、流量需求大</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="muted">配置与价格来自 NovixLink 官网商品页（2026-11-24 记录），人民币为官网标注的约数。</p>
+  </section>
+
+  <section>
+    <h2>优点</h2>
+    <ol>
+      <li><strong>住宅 IP，价格低。</strong>住宅 IP 的 VPS 通常不便宜，NovixLink 起价 $5.99 CAD（约 ¥30）每月，对个人用户很友好。</li>
+      <li><strong>两种需求都有对应线路。</strong>在大陆的选 NTT / GTT（回程走 9929 + CMIN2），在海外或看重流量的选 CG（1Gbps 端口、流量翻倍）。</li>
+      <li><strong>小内存也够用。</strong>Lite 只有 768MB 内存，但只跑 Xray（VLESS-Reality）一个服务完全够，资源占用很低。</li>
+      <li><strong>独享节点。</strong>相比公共机场，IP 只有你自己在用，不容易因为别人滥用被平台拉黑。</li>
+    </ol>
+  </section>
+
+  <section>
+    <h2>缺点</h2>
+    <ol>
+      <li><strong>有回程优化的线路常年缺货。</strong>NTT / GTT 线路在我记录的这段时间里几乎一直售罄，只能预订补货。</li>
+      <li><strong>CG 线路没有大陆优化。</strong>人在大陆直连，晚高峰可能偏慢；海外使用没有影响。</li>
+      <li><strong>硬盘小。</strong>Lite / Basic 只有 10GB，用来搭节点足够，但不适合建站或存文件。</li>
+      <li><strong>按加元计价。</strong>实际扣款金额会随汇率和你的付款方式略有浮动。</li>
+    </ol>
+  </section>
+
+  <section>
+    <h2>我的实测</h2>
+    <p>测试机：我自己在用的 NovixLink 住宅 IP VPS（ASN <strong>AS2914 NTT America</strong>），2026-11-27 用开源的 <a href="https://github.com/xykt/IPQuality" rel="noopener">IPQuality</a> 脚本检测。</p>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>测试项</th><th>结果</th></tr></thead>
+        <tbody>
+          <tr><td>IP 类型（综合判定）</td><td><span class="stock ok">原生 IP</span>，注册地与使用地都在美国</td></tr>
+          <tr><td>使用类型（5 个 IP 数据库）</td><td>IPinfo、ipregistry、ipapi、AbuseIPDB 判定为<strong>家宽</strong>；IP2Location 判定为机房（4 / 5 家宽）</td></tr>
+          <tr><td>风险评分</td><td>全部低风险：Scamalytics 9、IP2Location 3、ipapi 0.02%、AbuseIPDB 0</td></tr>
+          <tr><td>代理 / VPN / Tor 标记</td><td>各数据库均为「否」</td></tr>
+          <tr><td>ChatGPT</td><td><span class="stock ok">解锁</span>（原生）</td></tr>
+          <tr><td>流媒体</td><td>TikTok、Disney+、YouTube、Amazon Prime Video 原生解锁；Netflix 解锁（DNS 方式）；Reddit 屏蔽</td></tr>
+          <tr><td>IP 黑名单</td><td>423 个黑名单数据库中，被列入 <strong>0</strong> 个</td></tr>
+          <tr><td>邮件 25 端口</td><td>出站被封（发邮件需用 587 / 465 等端口，对搭节点没有影响）</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="note">结论：作为「住宅 IP」名副其实。5 个主流数据库里 4 个识别为家庭宽带，风险分都很低，没有进任何黑名单，ChatGPT 原生解锁。唯一的扣分项是 IP2Location 把它标成了机房，以及 Reddit 屏蔽。</p>
+    <p class="muted">不同机器分到的 IP 会有差异，以上为单台测试结果。想自己验证，可以在服务器上运行同一个检测脚本。</p>
+  </section>
+
+  <section>
+    <h2>当前库存</h2>
+    <div data-stock="cg,ntt,gtt">
+      <p class="muted">正在加载库存…</p>
+    </div>
+    <p class="note">💡 NTT / GTT 售罄时可以在官网点「预订补货」排队；急着用就先买 CG 线路。</p>
+  </section>
+
+  <section>
+    <h2>买完之后怎么用</h2>
+    <p>系统选 <strong>Debian 12</strong> 或 <strong>Ubuntu 22.04 / 24.04</strong>。开机后 SSH 登录，运行一行开源命令，约 30 秒就能部署好 VLESS-Reality 节点，免域名、免证书：</p>
+    <pre><code>curl -fsSL https://raw.githubusercontent.com/gkismet/antivpn/main/install.sh -o install.sh &amp;&amp; bash install.sh</code></pre>
+    <p>完整步骤看 <a href="guide.html">部署教程</a>，遇到问题看 <a href="faq.html">常见问题</a>。</p>
+    <div class="btn-row">
+      <a class="btn btn-primary" href="https://novixlink.com/aff.php?aff=580" rel="sponsored noopener" target="_blank">去 NovixLink 官网选购 →</a>
+      <a class="btn btn-ghost" href="plans.html">先看选购指南</a>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <p class="disclosure">📢 推广说明：本站的 NovixLink 链接为推广链接，通过它购买作者会获得一定返佣，你的价格不变。本文观点为作者个人使用感受，价格与库存以官网为准。</p>
+    <p class="disclosure">⚖️ 本项目仅用于学习、开发测试与合法的跨境办公用途，请遵守当地法律法规。</p>
+    <p>© 2026 AntiVPN · <a href="https://github.com/gkismet/antivpn" rel="noopener">GitHub</a></p>
+  </div>
+</footer>
+<script src="assets/site.js"></script>
+</body>
+</html>
